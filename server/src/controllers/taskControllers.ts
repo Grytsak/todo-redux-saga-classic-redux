@@ -52,6 +52,9 @@ export const toggleTaskStatus = asyncWrapper(async (req: express.Request, res: e
     }
 
     const task = await Task.findById(req.params.id)
+    
+    console.log('task:', task)
+    console.log('req.body:', req.body)
 
     // Check for task
     if(!task) {

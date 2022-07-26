@@ -10,7 +10,8 @@ import mongoose from 'mongoose'
 // @route POST /api/users
 // @access Public
 export const registerUser = asyncWrapper(async (req: express.Request, res: express.Response) => {
-    const {name, email, password} = req.body
+    const {name, email, password} = req.body.user
+    
 
     // Check if all fields are filled
     if(!name || !email || !password) {
@@ -54,7 +55,7 @@ export const registerUser = asyncWrapper(async (req: express.Request, res: expre
 // @route POST /api/users
 // @access Public
 export const loginUser = asyncWrapper(async (req: express.Request, res:express.Response) => {
-    const {email, password} = req.body
+    const {email, password} = req.body.user
 
     // Check for user credentials
     const user = await User.findOne({email})
